@@ -17,13 +17,13 @@ python -m ipykernel install --user --name demo_venv_hydra --display-name "Python
 
 
 
-wget https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_drive_0001/2011_09_26_drive_0001_sync.zip
+wget https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_drive_0001/2011_09_26_drive_0048_sync.zip
 wget https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_calib.zip
 wget https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_drive_0048/2011_09_26_drive_0048_tracklets.zip
 
-unzip KITTI-Dataset/data/2011_09_26_drive_0001_sync.zip
-unzip KITTI-Dataset/data/2011_09_26_calib.zip
-unzip KITTI-Dataset/data/2011_09_26_drive_0048_tracklets.zip
+unzip data/2011_09_26_drive_0048_sync.zip
+unzip data/2011_09_26_calib.zip
+unzip data/2011_09_26_drive_0048_tracklets.zip
 export TORCH_CUDA_ARCH_LIST="8.0"
 export CUDAARCH=80
 
