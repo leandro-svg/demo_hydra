@@ -8,11 +8,20 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 module load TensorFlow/2.13.0-foss-2023a
 
 
-python3 -m venv ~/demo/demo_venv_hydra/venv --system-site-packages
-source ~/demo/demo_venv_hydra/venv/bin/activate
+module spider python
+module load Python/3.12.3-GCCcore-13.3.0
+
+
+python3 -m venv ~/demo/demo_venv/venv --system-site-packages
+source ~/demo/demo_venv/venv/bin/activate
 python3 -m pip install --upgrade pip
-python3 -m pip install --no-cache-dir ipykernel tqdm jupyter gitpython wandb pykitti opencv-python moviepy==1.0.3
-python -m ipykernel install --user --name demo_venv_hydra --display-name "Python (demo_venv_hydra)"
+python3 -m pip install --no-cache-dir numpy plotly ipykernel tqdm jupyter matplotlib gitpython wandb opencv-python moviepy==1.0.3
+
+module load LibTIFF/4.6.0-GCCcore-13.3.0
+export LD_LIBRARY_PATH=$EBROOTLIBTIFF/lib:$LD_LIBRARY_PATH
+pip uninstall pillow -y
+pip install --no-cache-dir --no-binary=:all: --force-reinstall pillow
+python3 -m ipykernel install --user --name demo_venv --display-name "Python (demo_venv)"
 
 
 
