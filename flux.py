@@ -1,7 +1,6 @@
 import torch
 from diffusers import StableDiffusionPipeline
 
-# This model doesn't require authentication
 pipe = StableDiffusionPipeline.from_pretrained(
     "runwayml/stable-diffusion-v1-5",
     torch_dtype=torch.float16
@@ -16,4 +15,4 @@ image = pipe(
 ).images[0]
 
 image.save("generated_image.png")
-print("✅ Image generated successfully: generated_image.png")
+print("Image generated successfully: generated_image.png")

@@ -7,23 +7,23 @@ module load LibTIFF/4.6.0-GCCcore-13.3.0
 
 export LD_LIBRARY_PATH=$EBROOTLIBTIFF/lib:$LD_LIBRARY_PATH
 
-# Remove the problematic user-installed Pillow
-rm -rf ~/.local/lib/python3.12/site-packages/PIL*
-rm -rf ~/.local/lib/python3.12/site-packages/Pillow*
+# rm -rf ~/.local/lib/python3.12/site-packages/PIL*
+# rm -rf ~/.local/lib/python3.12/site-packages/Pillow*
 
-# Create venv WITH --system-site-packages to access module-installed PyTorch & Pillow
 python3 -m venv ~/demo/demo_venv_flux/venv --system-site-packages
 source ~/demo/demo_venv_flux/venv/bin/activate
 
-# Verify PyTorch is accessible
-python3 -c "import torch; print(f'✓ PyTorch {torch.__version__} from modules')"
+python3 -c "import torch; print(f'PyTorch {torch.__version__} from modules')"
+python3 -c "from PIL import Image; print('Pillow works with LibTIFF')"
+python3 -c "from diffusers import FluxPipeline; print('FluxPipeline ready')"
 
-# Verify Pillow works with LibTIFF
-python3 -c "from PIL import Image; print('✓ Pillow works with LibTIFF')"
+export LD_LIBRARY_PATH=$EBROOTLIBTIFF/lib:$LD_LIBRARY_PATH
 
-# Verify diffusers works (already installed in your user site-packages)
-python3 -c "from diffusers import FluxPipeline; print('✓ FluxPipeline ready')"
+export HF_HOME=$VSC_DATA/huggingface_cache
+export TRANSFORMERS_CACHE=$VSC_DATA/huggingface_cache
+mkdir -p $HF_HOME
 
-# Run flux.py
+source ~/demo/demo_venv_flux/venv/bin/activate
+
 cd ~/demo/KITTI-Dataset
 python3 flux.py
