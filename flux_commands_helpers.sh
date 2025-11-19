@@ -13,6 +13,10 @@ export LD_LIBRARY_PATH=$EBROOTLIBTIFF/lib:$LD_LIBRARY_PATH
 python3 -m venv ~/demo/demo_venv_flux/venv --system-site-packages
 source ~/demo/demo_venv_flux/venv/bin/activate
 
+pip install transformers
+pip install diffusers 
+
+
 python3 -c "import torch; print(f'PyTorch {torch.__version__} from modules')"
 python3 -c "from PIL import Image; print('Pillow works with LibTIFF')"
 python3 -c "from diffusers import FluxPipeline; print('FluxPipeline ready')"
