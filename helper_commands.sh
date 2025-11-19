@@ -35,8 +35,9 @@ python3 -m ipykernel install --user --name demo_venv_18 --display-name "Python (
 /user/brussel/109/vsc10985/demo/demo_venv_etro/venv/bin/python -m pip install ipykernel -U --force-reinstall
 
 # Download KITTI data
-mkdir -p data
-cd data
+mkdir $VSC_DATA/data
+ln -s $VSC_DATA/data ~/demo/KITTI-Dataset/data
+cd $VSC_DATA/data
 
 wget https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_drive_0001/2011_09_26_drive_0048_sync.zip
 wget https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_calib.zip
